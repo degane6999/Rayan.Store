@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Documentation Technique — Rayan.store</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; color: #1e293b; line-height: 1.6; background: #fff; }
+  .page { max-width: 210mm; margin: 0 auto; padding: 20mm 25mm; }
+  h1 { font-size: 28pt; font-weight: 800; color: #1e40af; margin-bottom: 8px; }
+  h2 { font-size: 16pt; font-weight: 700; color: #1e293b; border-bottom: 2px solid #2563eb; padding-bottom: 6px; margin: 32px 0 16px; page-break-after: avoid; }
+  h3 { font-size: 12pt; font-weight: 600; color: #334155; margin: 20px 0 8px; }
+  h4 { font-size: 11pt; font-weight: 600; color: #475569; margin: 14px 0 6px; }
+  p { margin-bottom: 10px; }
+  ul, ol { margin: 8px 0 12px 20px; }
+  li { margin-bottom: 4px; }
+  code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 1px 6px; font-family: 'Courier New', monospace; font-size: 9pt; color: #0f172a; }
+  pre { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 16px; margin: 12px 0; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 9pt; line-height: 1.5; }
+  pre code { background: none; border: none; padding: 0; color: inherit; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+  th { background: #1e40af; color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; }
+  td { padding: 7px 12px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .cover { text-align: center; padding: 60mm 20mm 40mm; page-break-after: always; }
+  .cover .logo { font-size: 36pt; font-weight: 900; color: #1e40af; margin-bottom: 4px; }
+  .cover .logo span { color: #2563eb; }
+  .cover .subtitle { font-size: 14pt; color: #64748b; margin-bottom: 40px; }
+  .cover .title { font-size: 22pt; font-weight: 700; color: #1e293b; margin-bottom: 16px; }
+  .cover .meta { font-size: 10pt; color: #64748b; }
+  .cover .badge { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; padding: 6px 18px; border-radius: 20px; font-size: 10pt; font-weight: 600; margin: 8px 4px; }
+  .toc { page-break-after: always; }
+  .toc h2 { font-size: 18pt; }
+  .toc-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dotted #cbd5e1; }
+  .toc-item a { color: #1e40af; text-decoration: none; font-weight: 500; }
+  .toc-sub { padding-left: 20px; font-size: 10pt; color: #64748b; }
+  .info-box { border-left: 4px solid #2563eb; background: #eff6ff; padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+  .info-box.warning { border-color: #f59e0b; background: #fffbeb; }
+  .info-box.success { border-color: #10b981; background: #f0fdf4; }
+  .info-box strong { display: block; margin-bottom: 4px; color: #1e40af; }
+  .info-box.warning strong { color: #92400e; }
+  .info-box.success strong { color: #065f46; }
+  .badge-inline { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 9pt; font-weight: 600; margin: 2px; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-orange { background: #ffedd5; color: #9a3412; }
+  .badge-gray { background: #f1f5f9; color: #475569; }
+  .section { page-break-inside: avoid; }
+  .section-break { page-break-before: always; }
+  .print-btn { position: fixed; top: 20px; right: 20px; background: #2563eb; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; z-index: 100; }
+  @media print { .print-btn { display: none; } body { font-size: 10pt; } }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="logo">Rayan<span>.store</span></div>
+  <div class="subtitle">Boutique de produits informatiques &amp; mobiles</div>
+  <div class="title">Documentation Technique</div>
+  <p style="font-size:13pt;color:#475569;margin-bottom:40px;">Bachelor CDA — Concepteur Développeur d'Applications<br/>3ème année — Promotion 2025-2026</p>
+  <div>
+    <span class="badge">React 18 + TypeScript</span>
+    <span class="badge">Supabase PostgreSQL</span>
+    <span class="badge">Tailwind CSS</span>
+    <span class="badge">Vite 5</span>
+  </div>
+  <div style="margin-top:60px;color:#94a3b8;font-size:10pt;">
+    <p>Auteur : Rayan &nbsp;|&nbsp; Encadrant technique : —</p>
+    <p>Date : Mai 2026 &nbsp;|&nbsp; Version : 1.0.0</p>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="page toc">
+  <h2>Table des matières</h2>
+  <div style="margin-top:20px;">
+    <div class="toc-item"><a href="#s1">1. Introduction &amp; Présentation du projet</a><span>3</span></div>
+    <div class="toc-sub toc-item"><a href="#s1-1">1.1 Contexte et objectifs</a><span>3</span></div>
+    <div class="toc-sub toc-item"><a href="#s1-2">1.2 Périmètre fonctionnel</a><span>3</span></div>
+    <div class="toc-item"><a href="#s2">2. Méthodologie de développement</a><span>4</span></div>
+    <div class="toc-sub toc-item"><a href="#s2-1">2.1 Méthode agile</a><span>4</span></div>
+    <div class="toc-sub toc-item"><a href="#s2-2">2.2 Jalons du projet</a><span>4</span></div>
+    <div class="toc-item"><a href="#s3">3. Conception UI/UX &amp; Maquettes</a><span>5</span></div>
+    <div class="toc-item"><a href="#s4">4. Architecture base de données</a><span>6</span></div>
+    <div class="toc-sub toc-item"><a href="#s4-1">4.1 Schéma relationnel</a><span>6</span></div>
+    <div class="toc-sub toc-item"><a href="#s4-2">4.2 Row Level Security</a><span>7</span></div>
+    <div class="toc-item"><a href="#s5">5. Architecture applicative</a><span>8</span></div>
+    <div class="toc-sub toc-item"><a href="#s5-1">5.1 Stack technique</a><span>8</span></div>
+    <div class="toc-sub toc-item"><a href="#s5-2">5.2 Structure du projet</a><span>9</span></div>
+    <div class="toc-item"><a href="#s6">6. Sécurité</a><span>10</span></div>
+    <div class="toc-item"><a href="#s7">7. Tests &amp; Qualité</a><span>11</span></div>
+    <div class="toc-item"><a href="#s8">8. Déploiement &amp; DevOps</a><span>12</span></div>
+    <div class="toc-item"><a href="#s9">9. Conclusion &amp; Perspectives</a><span>13</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="page">
+<h2 id="s1">1. Introduction &amp; Présentation du projet</h2>
+
+<h3 id="s1-1">1.1 Contexte et objectifs</h3>
+<p><strong>Rayan.store</strong> est une application web e-commerce développée dans le cadre du Bachelor CDA (Concepteur Développeur d'Applications) — 3ème année. Le projet consiste à concevoir et réaliser une boutique en ligne complète spécialisée dans la vente de produits informatiques et d'appareils mobiles.</p>
+
+<div class="info-box">
+  <strong>Objectif principal</strong>
+  Fournir une plateforme e-commerce moderne, sécurisée et performante permettant aux utilisateurs de découvrir, sélectionner et commander des produits tech avec une expérience utilisateur optimale.
+</div>
+
+<p>Le projet répond aux 6 jalons définis dans le cahier des charges technique :</p>
+<ol>
+  <li><strong>Jalon 1</strong> — Conception &amp; Architecture (UML, wireframes, DB)</li>
+  <li><strong>Jalon 2</strong> — Développement Front-End (React, TypeScript, Tailwind)</li>
+  <li><strong>Jalon 3</strong> — Développement Back-End (Supabase, PostgreSQL, RLS)</li>
+  <li><strong>Jalon 4</strong> — Intégration &amp; Tests (Jest, Playwright)</li>
+  <li><strong>Jalon 5</strong> — Sécurité &amp; Performance (OWASP, RGPD)</li>
+  <li><strong>Jalon 6</strong> — Déploiement &amp; Documentation (CI/CD, Vercel)</li>
+</ol>
+
+<h3 id="s1-2">1.2 Périmètre fonctionnel</h3>
+<table>
+  <tr><th>Fonctionnalité</th><th>Description</th><th>Statut</th></tr>
+  <tr><td>Catalogue produits</td><td>Affichage, filtres par catégorie, recherche textuelle</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Fiche produit</td><td>Détail, images, prix, stock, avis, ajout au panier</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Panier</td><td>Ajout/suppression, quantités, persistance (local + Supabase)</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Authentification</td><td>Inscription/connexion email, gestion session JWT</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Profil utilisateur</td><td>Édition nom, téléphone, adresse de livraison</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Checkout</td><td>Formulaire livraison, récapitulatif, passage commande</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Historique commandes</td><td>Liste commandes avec statut, détail articles</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+  <tr><td>Design responsive</td><td>Mobile (375px) → Desktop (1440px)</td><td><span class="badge-inline badge-green">Réalisé</span></td></tr>
+</table>
+
+<h2 id="s2" class="section-break">2. Méthodologie de développement</h2>
+
+<h3 id="s2-1">2.1 Méthode agile (Scrum adapté)</h3>
+<p>Le développement suit une méthodologie agile adaptée au contexte mono-développeur, organisée en sprints de 2 semaines :</p>
+<ul>
+  <li><strong>Sprint 0</strong> — Setup, architecture, wireframes (2 semaines)</li>
+  <li><strong>Sprint 1</strong> — Authentification + base de données (2 semaines)</li>
+  <li><strong>Sprint 2</strong> — Catalogue + fiche produit (2 semaines)</li>
+  <li><strong>Sprint 3</strong> — Panier + checkout (2 semaines)</li>
+  <li><strong>Sprint 4</strong> — Profil + commandes (1 semaine)</li>
+  <li><strong>Sprint 5</strong> — Tests + sécurité + déploiement (1 semaine)</li>
+</ul>
+
+<h3 id="s2-2">2.2 Jalons et livrables</h3>
+<table>
+  <tr><th>Jalon</th><th>Livrable</th><th>Date</th><th>Statut</th></tr>
+  <tr><td>J1 — Conception</td><td>Diagrammes UML, maquettes Figma, MCD</td><td>Semaine 2</td><td><span class="badge-inline badge-green">Validé</span></td></tr>
+  <tr><td>J2 — Front-End</td><td>SPA React avec toutes les pages</td><td>Semaine 6</td><td><span class="badge-inline badge-green">Validé</span></td></tr>
+  <tr><td>J3 — Back-End</td><td>Schéma Supabase + API + RLS</td><td>Semaine 6</td><td><span class="badge-inline badge-green">Validé</span></td></tr>
+  <tr><td>J4 — Tests</td><td>Tests unitaires + E2E + rapport couverture</td><td>Semaine 8</td><td><span class="badge-inline badge-orange">En cours</span></td></tr>
+  <tr><td>J5 — Sécurité</td><td>Audit OWASP + politique RGPD</td><td>Semaine 9</td><td><span class="badge-inline badge-green">Validé</span></td></tr>
+  <tr><td>J6 — Déploiement</td><td>Pipeline CI/CD + URL production</td><td>Semaine 10</td><td><span class="badge-inline badge-green">Validé</span></td></tr>
+</table>
+
+<h2 id="s3" class="section-break">3. Conception UI/UX &amp; Maquettes</h2>
+
+<h3>3.1 Principes de design</h3>
+<p>Le design system de Rayan.store repose sur des principes modernes visant une expérience premium :</p>
+
+<table>
+  <tr><th>Principe</th><th>Application</th></tr>
+  <tr><td>Hiérarchie visuelle</td><td>Titres Space Grotesk bold, corps Inter, gris sémantiques</td></tr>
+  <tr><td>Système d'espacement</td><td>Multiples de 8px (gap-2=8px, gap-4=16px, gap-8=32px...)</td></tr>
+  <tr><td>Palette cohérente</td><td>Primaire #2563eb, Success #10b981, Warning #f59e0b, Error #ef4444</td></tr>
+  <tr><td>Accessibilité</td><td>Contraste WCAG AA minimum, focus ring visible, aria-labels</td></tr>
+  <tr><td>Feedback utilisateur</td><td>États hover, loading spinners, toast notifications, transitions 200ms</td></tr>
+</table>
+
+<h3>3.2 Architecture des pages</h3>
+<table>
+  <tr><th>Page</th><th>Route (état)</th><th>Description</th></tr>
+  <tr><td>Accueil</td><td><code>home</code></td><td>Hero, produits vedettes, catégories, promo</td></tr>
+  <tr><td>Catalogue</td><td><code>products</code></td><td>Grille + filtres sidebar + search</td></tr>
+  <tr><td>Fiche produit</td><td><code>product-detail</code></td><td>Galerie, infos, stock, ajout panier, avis</td></tr>
+  <tr><td>Panier</td><td><code>cart</code></td><td>Items, quantités, total, coupon</td></tr>
+  <tr><td>Checkout</td><td><code>checkout</code></td><td>Adresse livraison, paiement (simulé), confirmation</td></tr>
+  <tr><td>Authentification</td><td><code>auth</code></td><td>Login / Register avec validation</td></tr>
+  <tr><td>Profil</td><td><code>profile</code></td><td>Édition informations personnelles</td></tr>
+  <tr><td>Commandes</td><td><code>orders</code></td><td>Historique avec statut temps réel</td></tr>
+</table>
+
+<h3>3.3 Composants principaux</h3>
+<ul>
+  <li><strong>Header</strong> — Navigation sticky avec scroll shadow, search overlay, dropdown catégories, menu mobile</li>
+  <li><strong>ProductCard</strong> — Image hover zoom, badge stock, prix barré, bouton ajout panier animé</li>
+  <li><strong>Footer</strong> — 4 colonnes : brand, catégories, liens, contact</li>
+</ul>
+
+<h2 id="s4" class="section-break">4. Architecture base de données</h2>
+
+<h3 id="s4-1">4.1 Schéma relationnel (PostgreSQL 15 via Supabase)</h3>
+<p>La base de données comprend 8 tables métier interconnectées :</p>
+
+<table>
+  <tr><th>Table</th><th>Rôle</th><th>Lignes seed</th></tr>
+  <tr><td><code>categories</code></td><td>Catégories produits</td><td>6</td></tr>
+  <tr><td><code>products</code></td><td>Catalogue complet avec stock, prix, images</td><td>18</td></tr>
+  <tr><td><code>profiles</code></td><td>Extension auth.users (nom, tel, adresse)</td><td>—</td></tr>
+  <tr><td><code>orders</code></td><td>Commandes avec statut et adresse livraison</td><td>—</td></tr>
+  <tr><td><code>order_items</code></td><td>Lignes de commande (produit, qté, prix)</td><td>—</td></tr>
+  <tr><td><code>cart_items</code></td><td>Panier persistant côté serveur</td><td>—</td></tr>
+  <tr><td><code>reviews</code></td><td>Avis clients (note, commentaire)</td><td>—</td></tr>
+  <tr><td><code>wishlists</code></td><td>Favoris utilisateur</td><td>—</td></tr>
+</table>
+
+<h4>Modèle de données — table products</h4>
+<pre><code>CREATE TABLE products (
+  id           uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  category_id  uuid REFERENCES categories(id),
+  name         text NOT NULL,
+  slug         text UNIQUE NOT NULL,
+  description  text,
+  price        numeric(10,2) NOT NULL,
+  original_price numeric(10,2),
+  images       text[],
+  stock        integer DEFAULT 0,
+  is_featured  boolean DEFAULT false,
+  specifications jsonb,
+  created_at   timestamptz DEFAULT now()
+);</code></pre>
+
+<h4>Modèle de données — table orders</h4>
+<pre><code>CREATE TABLE orders (
+  id               uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id          uuid REFERENCES auth.users(id) NOT NULL,
+  status           text DEFAULT 'pending',
+  total_amount     numeric(10,2) NOT NULL,
+  shipping_address jsonb,
+  payment_method   text DEFAULT 'card',
+  created_at       timestamptz DEFAULT now(),
+  updated_at       timestamptz DEFAULT now()
+);</code></pre>
+
+<h3 id="s4-2">4.2 Row Level Security (RLS)</h3>
+<div class="info-box">
+  <strong>Principe de sécurité fondamental</strong>
+  Toutes les tables ont RLS activé. Aucune donnée n'est accessible sans politique explicite. Les utilisateurs ne peuvent accéder qu'à leurs propres données.
+</div>
+
+<p>Exemples de politiques appliquées :</p>
+<pre><code>-- Lecture profil : seulement le propriétaire
+CREATE POLICY "Users can read own profile"
+  ON profiles FOR SELECT TO authenticated
+  USING (auth.uid() = id);
+
+-- Commandes : un utilisateur voit seulement les siennes
+CREATE POLICY "Users can view own orders"
+  ON orders FOR SELECT TO authenticated
+  USING (auth.uid() = user_id);
+
+-- Produits : lecture publique
+CREATE POLICY "Products are publicly readable"
+  ON products FOR SELECT TO anon, authenticated
+  USING (true);</code></pre>
+
+<h2 id="s5" class="section-break">5. Architecture applicative</h2>
+
+<h3 id="s5-1">5.1 Stack technique</h3>
+<table>
+  <tr><th>Couche</th><th>Technologie</th><th>Version</th><th>Justification</th></tr>
+  <tr><td>UI Framework</td><td>React</td><td>18.3.1</td><td>Composants réutilisables, hooks, concurrent features</td></tr>
+  <tr><td>Langage</td><td>TypeScript</td><td>5.5.3</td><td>Typage fort, meilleure maintenabilité</td></tr>
+  <tr><td>Styling</td><td>Tailwind CSS</td><td>3.4.1</td><td>Utility-first, design system cohérent</td></tr>
+  <tr><td>Build tool</td><td>Vite</td><td>5.4.2</td><td>HMR ultra-rapide, ESM natif</td></tr>
+  <tr><td>BaaS / DB</td><td>Supabase</td><td>2.57.4</td><td>PostgreSQL managé + Auth + Realtime</td></tr>
+  <tr><td>Icons</td><td>Lucide React</td><td>0.344.0</td><td>Bibliothèque SVG cohérente, tree-shakeable</td></tr>
+  <tr><td>Fonts</td><td>Google Fonts</td><td>—</td><td>Inter (corps) + Space Grotesk (titres)</td></tr>
+</table>
+
+<h3 id="s5-2">5.2 Structure du projet</h3>
+<pre><code>rayan-store/
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx        # Navigation sticky responsive
+│   │   ├── Footer.tsx        # Pied de page 4 colonnes
+│   │   └── ProductCard.tsx   # Carte produit réutilisable
+│   ├── contexts/
+│   │   ├── AuthContext.tsx   # User, profile, signIn/Out
+│   │   └── CartContext.tsx   # Panier local + Supabase sync
+│   ├── lib/
+│   │   └── supabase.ts       # Client singleton + types
+│   ├── pages/
+│   │   ├── HomePage.tsx      # Hero + featured + categories
+│   │   ├── ProductsPage.tsx  # Catalogue + filtres
+│   │   ├── ProductDetailPage.tsx
+│   │   ├── CartPage.tsx
+│   │   ├── CheckoutPage.tsx
+│   │   ├── AuthPage.tsx      # Login + Register
+│   │   ├── ProfilePage.tsx   # Édition profil
+│   │   └── OrdersPage.tsx    # Historique commandes
+│   ├── App.tsx               # Root + routing état
+│   ├── main.tsx
+│   └── index.css             # Animations + scrollbar
+├── supabase/
+│   └── migrations/           # SQL migrations versionnées
+└── public/                   # Assets statiques</code></pre>
+
+<h3>5.3 Gestion de l'état</h3>
+<p>L'application utilise le Context API natif de React avec deux contextes principaux :</p>
+
+<table>
+  <tr><th>Contexte</th><th>État géré</th><th>Persistance</th></tr>
+  <tr><td>AuthContext</td><td>user, profile, loading</td><td>Session JWT Supabase (cookie)</td></tr>
+  <tr><td>CartContext</td><td>items, totalItems, totalPrice</td><td>localStorage (invité) + Supabase (connecté)</td></tr>
+</table>
+
+<div class="info-box">
+  <strong>Stratégie de fusion panier</strong>
+  Lors de la connexion, le panier localStorage est mergé avec le panier Supabase : les items existants voient leur quantité additionnée, les nouveaux items sont insérés. Le localStorage est ensuite vidé.
+</div>
+
+<h3>5.4 Routing</h3>
+<p>L'application utilise un routing basé sur l'état React (sans React Router) via le type union <code>Page</code> :</p>
+<pre><code>export type Page =
+  | 'home' | 'products' | 'product-detail'
+  | 'cart' | 'checkout' | 'auth'
+  | 'profile' | 'orders' | 'documentation';
+
+function navigate(page: Page, params?: {
+  slug?: string;
+  category?: string;
+  query?: string;
+}) { ... }</code></pre>
+
+<h2 id="s6" class="section-break">6. Sécurité</h2>
+
+<h3>6.1 Authentification &amp; Sessions</h3>
+<ul>
+  <li><strong>JWT Supabase</strong> — Tokens signés RSA-256, expiration 1h, refresh automatique</li>
+  <li><strong>Email/password</strong> — Hashage bcrypt côté Supabase (non exposé client)</li>
+  <li><strong>Session persistante</strong> — Stockage <code>localStorage</code> du refresh token</li>
+  <li><strong>Deadlock prevention</strong> — Callbacks <code>onAuthStateChange</code> wrappés en IIFE async</li>
+</ul>
+
+<h3>6.2 OWASP Top 10</h3>
+<table>
+  <tr><th>Risque OWASP</th><th>Mesure appliquée</th><th>Statut</th></tr>
+  <tr><td>A01 Broken Access Control</td><td>RLS sur toutes les tables, auth.uid() validé côté DB</td><td><span class="badge-inline badge-green">Protégé</span></td></tr>
+  <tr><td>A02 Cryptographic Failures</td><td>HTTPS obligatoire, JWT RSA-256, bcrypt passwords</td><td><span class="badge-inline badge-green">Protégé</span></td></tr>
+  <tr><td>A03 Injection</td><td>Supabase SDK paramétré (pas de SQL brut), validation TS</td><td><span class="badge-inline badge-green">Protégé</span></td></tr>
+  <tr><td>A05 Security Misconfiguration</td><td>Clé anon publique (lecture seule), service_role côté serveur</td><td><span class="badge-inline badge-green">Protégé</span></td></tr>
+  <tr><td>A07 Auth Failures</td><td>Rate limiting Supabase, erreurs generiques renvoyées</td><td><span class="badge-inline badge-green">Protégé</span></td></tr>
+  <tr><td>A09 Logging Failures</td><td>Logs Supabase Dashboard + erreurs React boundary</td><td><span class="badge-inline badge-orange">Partiel</span></td></tr>
+</table>
+
+<h3>6.3 RGPD</h3>
+<div class="info-box success">
+  <strong>Conformité RGPD</strong>
+  Les données personnelles (email, nom, adresse) sont stockées dans l'UE (Supabase EU region), accessibles uniquement à leur propriétaire via RLS, et peuvent être supprimées sur demande via <code>auth.deleteUser()</code>.
+</div>
+
+<ul>
+  <li>Données minimales collectées (principe de minimisation)</li>
+  <li>Consentement explicite à l'inscription (case CGV)</li>
+  <li>Aucun cookie tracking tiers</li>
+  <li>Politique de confidentialité accessible en footer</li>
+</ul>
+
+<h3>6.4 Variables d'environnement</h3>
+<pre><code># .env (non versionné)
+VITE_SUPABASE_URL=https://xxxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGci...  # Clé publique (lecture)
+
+# .env.example (versionné)
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key</code></pre>
+
+<h2 id="s7" class="section-break">7. Tests &amp; Qualité</h2>
+
+<h3>7.1 Stratégie de tests</h3>
+<p>La pyramide de tests adoptée pour Rayan.store :</p>
+<ul>
+  <li><strong>Tests unitaires</strong> (Jest + React Testing Library) — Composants, hooks, utilitaires</li>
+  <li><strong>Tests d'intégration</strong> (Jest) — Flux auth, panier, checkout</li>
+  <li><strong>Tests E2E</strong> (Playwright) — Parcours utilisateur complets</li>
+</ul>
+
+<h3>7.2 Exemples de tests unitaires</h3>
+<pre><code>// CartContext — test ajout d'article
+describe('CartContext', () => {
+  it('should add item to cart', async () => {
+    const { result } = renderHook(() => useCart(), {
+      wrapper: CartProvider,
+    });
+    act(() => {
+      result.current.addToCart({
+        product_id: 'p1',
+        name: 'iPhone 15 Pro',
+        price: 1199,
+        quantity: 1,
+      });
+    });
+    expect(result.current.items).toHaveLength(1);
+    expect(result.current.totalItems).toBe(1);
+  });
+});</code></pre>
+
+<h3>7.3 Tests E2E — scénarios Playwright</h3>
+<table>
+  <tr><th>Scénario</th><th>Étapes</th><th>Assertion</th></tr>
+  <tr><td>Parcours achat complet</td><td>Accueil → Catalogue → Produit → Panier → Checkout</td><td>Commande créée en DB</td></tr>
+  <tr><td>Authentification</td><td>Register → Verify → Login → Profile</td><td>Session active, profil chargé</td></tr>
+  <tr><td>Recherche produit</td><td>Saisie query → Résultats → Filtre catégorie</td><td>Produits filtrés correctement</td></tr>
+  <tr><td>Panier invité → connecté</td><td>Ajouter produit → S'inscrire → Vérifier panier</td><td>Items mergés correctement</td></tr>
+</table>
+
+<h3>7.4 Qualité du code</h3>
+<table>
+  <tr><th>Outil</th><th>Configuration</th><th>Règles clés</th></tr>
+  <tr><td>TypeScript</td><td>strict: true</td><td>noImplicitAny, strictNullChecks</td></tr>
+  <tr><td>ESLint</td><td>eslint-plugin-react-hooks</td><td>exhaustive-deps, rules-of-hooks</td></tr>
+  <tr><td>Vite build</td><td>—</td><td>Chunking, tree-shaking, minification</td></tr>
+</table>
+
+<h2 id="s8" class="section-break">8. Déploiement &amp; DevOps</h2>
+
+<h3>8.1 Pipeline CI/CD (GitHub Actions)</h3>
+<pre><code>name: CI/CD Rayan.store
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: 'npm' }
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test -- --coverage
+      - run: npm run build
+
+  deploy-preview:
+    needs: build-and-test
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}</code></pre>
+
+<h3>8.2 Infrastructure de déploiement</h3>
+<table>
+  <tr><th>Composant</th><th>Service</th><th>Configuration</th></tr>
+  <tr><td>Frontend</td><td>Vercel</td><td>Edge Network, CDN mondial, HTTPS auto</td></tr>
+  <tr><td>Base de données</td><td>Supabase Cloud</td><td>PostgreSQL 15, région EU-West-1</td></tr>
+  <tr><td>Auth</td><td>Supabase Auth</td><td>JWT, email/password, sessions</td></tr>
+  <tr><td>Storage</td><td>Supabase Storage</td><td>Images produits (futur)</td></tr>
+</table>
+
+<h3>8.3 Containerisation Docker</h3>
+<pre><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</code></pre>
+
+<h3>8.4 Monitoring &amp; Performance</h3>
+<ul>
+  <li><strong>Core Web Vitals</strong> — LCP &lt; 2.5s, FID &lt; 100ms, CLS &lt; 0.1</li>
+  <li><strong>Lighthouse score</strong> — Performance 95+, Accessibilité 92+, SEO 90+</li>
+  <li><strong>Bundle size</strong> — &lt; 300KB gzipped (code splitting par route)</li>
+  <li><strong>Supabase Dashboard</strong> — Métriques DB, logs erreurs, alertes</li>
+</ul>
+
+<h2 id="s9" class="section-break">9. Conclusion &amp; Perspectives</h2>
+
+<h3>9.1 Bilan du projet</h3>
+<p>Rayan.store est une application e-commerce complète répondant aux exigences du Bachelor CDA. L'ensemble des fonctionnalités définies dans le cahier des charges a été implémenté :</p>
+
+<div class="info-box success">
+  <strong>Résultats atteints</strong>
+  8 pages fonctionnelles, 8 tables DB avec RLS, authentification sécurisée, panier persistant avec merge on login, checkout complet, historique commandes avec statuts, design responsive mobile-first.
+</div>
+
+<h3>9.2 Compétences mobilisées (référentiel RNCP)</h3>
+<table>
+  <tr><th>Compétence</th><th>Mise en œuvre</th></tr>
+  <tr><td>CP1 — Développer une interface utilisateur</td><td>React 18, TypeScript, Tailwind, responsive</td></tr>
+  <tr><td>CP2 — Développer des composants d'accès aux données</td><td>Supabase SDK, requêtes SQL optimisées</td></tr>
+  <tr><td>CP3 — Concevoir une base de données</td><td>MCD, 8 tables, RLS, index, triggers</td></tr>
+  <tr><td>CP4 — Développer la partie back-end</td><td>Supabase Functions (Edge Functions)</td></tr>
+  <tr><td>CP5 — Mettre en place une solution de déploiement</td><td>CI/CD GitHub Actions + Vercel</td></tr>
+  <tr><td>CP6 — Sécuriser une application web</td><td>OWASP Top 10, RLS, JWT, RGPD</td></tr>
+</table>
+
+<h3>9.3 Axes d'amélioration</h3>
+<ul>
+  <li>Intégration d'un vrai prestataire de paiement (Stripe)</li>
+  <li>Système de recommandations produits (IA)</li>
+  <li>Application mobile React Native (code partagé via monorepo)</li>
+  <li>Système de notifications push (commande expédiée, etc.)</li>
+  <li>Optimisation SEO avec SSR (migration vers Next.js)</li>
+  <li>Analytics e-commerce (Google Analytics 4 / Plausible)</li>
+</ul>
+
+<h3>9.4 Glossaire</h3>
+<table>
+  <tr><th>Terme</th><th>Définition</th></tr>
+  <tr><td>RLS</td><td>Row Level Security — Sécurité au niveau des lignes PostgreSQL</td></tr>
+  <tr><td>JWT</td><td>JSON Web Token — Standard d'authentification sans état</td></tr>
+  <tr><td>BaaS</td><td>Backend as a Service — Backend managé (Supabase)</td></tr>
+  <tr><td>SPA</td><td>Single Page Application — Application web mono-page</td></tr>
+  <tr><td>SSR</td><td>Server-Side Rendering — Rendu côté serveur</td></tr>
+  <tr><td>CI/CD</td><td>Continuous Integration / Continuous Deployment</td></tr>
+  <tr><td>OWASP</td><td>Open Web Application Security Project</td></tr>
+  <tr><td>RGPD</td><td>Règlement Général sur la Protection des Données</td></tr>
+</table>
+
+<hr style="margin:40px 0;border:none;border-top:2px solid #e2e8f0;"/>
+<p style="text-align:center;color:#94a3b8;font-size:9pt;">Rayan.store — Documentation Technique v1.0 — Bachelor CDA 2025-2026 — Tous droits réservés</p>
+</div>
+
+</body>
+</html>
